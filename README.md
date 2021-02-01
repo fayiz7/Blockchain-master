@@ -1,3 +1,6 @@
+Original work in this repo:
+https://github.com/Will1229/Blockchain
+
 # A simple implementation of blockchain
 This project aims to create a simple implementation of blockchain concept and demostrate it in a user friendly way. 
 
