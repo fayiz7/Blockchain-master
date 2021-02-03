@@ -8,7 +8,7 @@ public class Block implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int index;
-    private int order;
+    private int id;
     private Long timestamp;
     private String hash;
     private String previousHash;
@@ -22,7 +22,7 @@ public class Block implements Serializable {
     public String toString() {
         return "Block{" +
                 "index=" + index +
-                "order=" + order +
+                "id=" + id +
                 ", timestamp=" + timestamp +
                 ", creator=" + creator +
 //                ", hash='" + hash + '\'' +
@@ -49,6 +49,7 @@ public class Block implements Serializable {
     @Override
     public int hashCode() {
         int result = index;
+        result = 31 * result + id;
         result = 31 * result + timestamp.hashCode();
         result = 31 * result + hash.hashCode();
         result = 31 * result + previousHash.hashCode();
@@ -56,15 +57,15 @@ public class Block implements Serializable {
         return result;
     }
 
-    public Block(int index,int order, String preHash, String creator) {
+    public Block(int index,int id, String preHash, String creator) {
         this.index = index;
-        this.order = order;
+        this.id = id;
         this.previousHash = preHash;
         this.creator = creator;
         timestamp = System.currentTimeMillis();
         hash = calculateHash(String.valueOf(index) + previousHash + String.valueOf(timestamp));
         System.out.println("index "+index);
-        System.out.println("order "+order);
+        System.out.println("id "+id);
         System.out.println("preHash "+preHash);
         System.out.println("hash "+hash);
         System.out.println("creator "+creator);
@@ -81,8 +82,8 @@ public class Block implements Serializable {
         return index;
     }
 
-    public int getOrder() {
-        return order;
+    public int getid() {
+        return id;
     }
 
     public long getTimestamp() {

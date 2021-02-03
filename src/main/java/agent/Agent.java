@@ -18,7 +18,10 @@ import static agent.Message.MESSAGE_TYPE.REQ_ALL_BLOCKS;
 import static agent.Message.MESSAGE_TYPE.RSP_ALL_BLOCKS;
 
 public class Agent {
-
+    public String hash1="";
+    public String hash2="";
+    public String hash3="";
+    public String hash4="";
     private String name;
     private String address;
     private int port;
@@ -69,8 +72,9 @@ public class Agent {
         }
 
         final int index = previousBlock.getIndex() + 1;
-        final int order = previousBlock.getOrder()+1;
-        final int a = Integer.parseInt(Integer.toString(previousBlock.getOrder()) + Integer.toString(1));
+        final int order = previousBlock.getid()+1;
+        hash1= previousBlock.getHash();
+        final int a = Integer.parseInt(Integer.toString(previousBlock.getid()) + Integer.toString(1));
         final Block block = new Block(index, order,previousBlock.getHash(), name);
         System.out.println(String.format("%s created new block %s", name, block.toString()));
         broadcast(INFO_NEW_BLOCK, block);
@@ -80,7 +84,7 @@ public class Agent {
     void addBlock(Block block) {
         if (isBlockValid(block)) {
             blockchain.add(block);
-            Testing.print(blockchain);
+//            Testing.print(blockchain);
             
         }
     }
