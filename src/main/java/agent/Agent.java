@@ -84,7 +84,7 @@ public class Agent {
     void addBlock(Block block) {
         if (isBlockValid(block)) {
             blockchain.add(block);
-//            Testing.print(blockchain);
+            Testing.print(blockchain);
             
         }
     }
