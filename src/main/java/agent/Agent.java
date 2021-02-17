@@ -120,6 +120,18 @@ public class Agent {
         if (blockchain.isEmpty()) {
             return null;
         }
+        // four arraylist. (n E W S)
+        blockchain.get(blockhainnorth.size()-1) //
+        // base node has n, e, w, s
+        // you add a node to east
+        // now how mnay north options you have? TWO (one from base and one from the east blcok)
+        // if you want to reset
+        // store ht eincomplete blocks in n arraylist
+        // at any node, i get the north of that node.
+        // if you want to move early node, then go through the arraylist and get the node and get the north or whaver of it.
+        // teh arraylist should be a structure (node id, north, e , w, s)
+        // if you wadd a norde to the west, you change the structure (node i, noth, new node id, south)
+
         return blockchain.get(blockchain.size() - 1);
     }
 
