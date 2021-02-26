@@ -62,7 +62,6 @@ public class Agent {
     }
 
     Block createBlock() {
-        int i=0;
         if (blockchain.isEmpty()) {
             return null;
         }
@@ -76,14 +75,10 @@ public class Agent {
         final int order = previousBlock.getid()+1;
         hash1= previousBlock.getHash();
         final int a = Integer.parseInt(Integer.toString(previousBlock.getid()) + Integer.toString(1));
-//        final Block block = new Block(index, order,previousBlock.getHash(), name);
-        while(i<4) {
-            previousBlock.blockChildren[i] = new Block(index, order, previousBlock.getHash(), name);
-
-        }
-        System.out.println(String.format("%s created new block %s", name, previousBlock.blockChildren[i].toString()));
-        broadcast(INFO_NEW_BLOCK, previousBlock.blockChildren[i]);
-        return previousBlock.blockChildren[++i];
+        final Block block = new Block(index, order,previousBlock.getHash(), name);
+        System.out.println(String.format("%s created new block %s", name, block.toString()));
+        broadcast(INFO_NEW_BLOCK, block);
+        return block;
     }
 
     void addBlock(Block block) {
@@ -126,7 +121,7 @@ public class Agent {
             return null;
         }
         // four arraylist. (n E W S)
-            //*blockchain.get(blockhainnorth.size()-1) //
+        blockchain.get(blockhainnorth.size()-1) //
         // base node has n, e, w, s
         // you add a node to east
         // now how mnay north options you have? TWO (one from base and one from the east blcok)

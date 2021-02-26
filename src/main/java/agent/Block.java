@@ -13,7 +13,7 @@ public class Block implements Serializable {
     private String hash;
     private String previousHash;
     private String creator;
-    public Block[] blockChildren =new Block[4];
+
     // for jackson
     public Block() {
     }
