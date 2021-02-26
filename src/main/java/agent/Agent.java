@@ -127,6 +127,7 @@ public class Agent {
         if (blockchain.isEmpty()) {
             return null;
         }
+<<<<<<< HEAD
         // four arraylist. (n E W S)
             //*blockchain.get(blockhainnorth.size()-1) //
         // base node has n, e, w, s
@@ -139,6 +140,8 @@ public class Agent {
         // teh arraylist should be a structure (node id, north, e , w, s)
         // if you wadd a norde to the west, you change the structure (node i, noth, new node id, south)
 
+=======
+>>>>>>> parent of b59c366 (Doctor Buhari Commit)
         return blockchain.get(blockchain.size() - 1);
     }
 
