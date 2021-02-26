@@ -80,12 +80,10 @@ public class Agent {
         while(i<4) {
             previousBlock.blockChildren[i] = new Block(index, order, previousBlock.getHash(), name);
 
-
-            System.out.println(String.format("%s created new block %s", name, previousBlock.blockChildren[i].toString()));
-            broadcast(INFO_NEW_BLOCK, previousBlock.blockChildren[i]);
-            return previousBlock.blockChildren[++i];
         }
-        return null;
+        System.out.println(String.format("%s created new block %s", name, previousBlock.blockChildren[i].toString()));
+        broadcast(INFO_NEW_BLOCK, previousBlock.blockChildren[i]);
+        return previousBlock.blockChildren[++i];
     }
 
     void addBlock(Block block) {
