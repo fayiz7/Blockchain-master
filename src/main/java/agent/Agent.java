@@ -121,7 +121,7 @@ public class Agent {
             return null;
         }
         // four arraylist. (n E W S)
-        blockchain.get(blockhainnorth.size()-1) //
+        //blockchain.get(blockhainnorth.size()-1) //
         // base node has n, e, w, s
         // you add a node to east
         // now how mnay north options you have? TWO (one from base and one from the east blcok)
