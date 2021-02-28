@@ -1,4 +1,5 @@
 package agent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,9 @@ public class Testing {
         print(blockchain);
 
     }
-    public static  void print(List<Block> b){
-        System.out.println("Ya Fayiz this is the latest update:"+b.toString());
+
+    public static void print(List<Block> b) {
+        System.out.println("Ya Fayiz this is the latest update:" + b.toString());
 
     }
 

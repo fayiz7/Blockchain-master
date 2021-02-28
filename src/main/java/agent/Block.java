@@ -3,6 +3,7 @@ package agent;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class Block implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -13,9 +14,17 @@ public class Block implements Serializable {
     private String hash;
     private String previousHash;
     private String creator;
-
-    // for jackson
+    private Block parent;
+    private List<Block> children;
     public Block() {
+    }
+    public void addChild(Block child) {
+        child.setParent(this);
+        children.add(child);
+    }
+
+    public void setParent(Block block) {
+        this.parent=block;
     }
 
     @Override

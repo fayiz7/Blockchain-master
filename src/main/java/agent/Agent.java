@@ -33,7 +33,7 @@ public class Agent {
 
     private boolean listening = true;
 
-    // for jackson
+
     public Agent() {
     }
 
