@@ -3,8 +3,10 @@ package agent;
 import java.util.ArrayList;
 
 
-/**
+/**to handle the blockchain
  * Generic n-ary tree.
+ *
+ *
  *
  * @param <T> Any class type
  */

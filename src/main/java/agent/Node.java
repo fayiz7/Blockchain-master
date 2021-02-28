@@ -4,7 +4,7 @@ package agent;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**to handle the block 
  * A node of any type. A node contains a data and links to it's children and it's parent.
  *
  * @param <T> The class type of the node
