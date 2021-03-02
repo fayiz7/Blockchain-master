@@ -131,8 +131,13 @@ public class Agent {
         // if you want to move early node, then go through the arraylist and get the node and get the north or whaver of it.
         // teh arraylist should be a structure (node id, north, e , w, s)
         // if you wadd a norde to the west, you change the structure (node i, noth, new node id, south)
+        for (int i = 0 ;true;i++){
+            for (int j = 0 ; j<4 ; j++){
+                 return blockchain.get(i).getChildren().get(j);
+            }
+        }
+        //return blockchain.get(blockchain.size() - 1);
 
-        return blockchain.get(blockchain.size() - 1);
     }
 
     private boolean isBlockValid(final Block block) {

@@ -3,6 +3,7 @@ package agent;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Block implements Serializable {
@@ -14,8 +15,8 @@ public class Block implements Serializable {
     private String hash;
     private String previousHash;
     private String creator;
-    private Block parent;
-    private List<Block> children;
+    public Block parent;
+    public List<Block> children;
     public Block() {
     }
     public void addChild(Block child) {
@@ -23,9 +24,18 @@ public class Block implements Serializable {
         children.add(child);
     }
 
+    public List<Block> getChildren() {
+        return children;
+    }
+
+    public Block getParent() {
+        return parent;
+    }
+
     public void setParent(Block block) {
         this.parent=block;
     }
+
 
     @Override
     public String toString() {
@@ -71,6 +81,7 @@ public class Block implements Serializable {
         this.id = id;
         this.previousHash = preHash;
         this.creator = creator;
+        this.children=new ArrayList<>();
         timestamp = System.currentTimeMillis();
         hash = calculateHash(String.valueOf(index) + previousHash + String.valueOf(timestamp));
         System.out.println("index "+index);
@@ -81,6 +92,18 @@ public class Block implements Serializable {
         System.out.println("timestamp "+timestamp);
 
         System.out.println("here");
+        if (this.getParent()!=null){
+            System.out.println(" parent id "+this.parent.getid());
+        }
+        System.out.println(this.getChildren());
+
+        for (int i =0 ; i <4 ; i++){
+            Block b = new Block();
+            this.children.add(b);
+            //Block b = this.getChildren().get(i);//=new Block();
+            this.getChildren().get(i).setParent(this);
+        }
+        //System.out.println(this.parent);
     }
 
     public String getCreator() {
@@ -127,3 +150,15 @@ public class Block implements Serializable {
         return hexString.toString();
     }
 }
+
+/*
+
+Ideas:
+
+i can once i mine a block , immediately create its Arraylist of children
+blocks with parent hash of current block , and leave these children blocks with only parent hash
+so i can come back and fill other data members
+
+
+
+ */
