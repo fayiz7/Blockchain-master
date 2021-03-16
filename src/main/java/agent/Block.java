@@ -102,7 +102,11 @@ public class Block implements Serializable {
             this.children.add(b);
             //Block b = this.getChildren().get(i);//=new Block();
             this.getChildren().get(i).setParent(this);
+            System.out.println(i);
+            System.out.println(this.getTimestamp());
+
         }
+        System.out.println("out");
         //System.out.println(this.parent);
     }
 

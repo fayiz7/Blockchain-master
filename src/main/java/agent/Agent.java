@@ -42,6 +42,7 @@ public class Agent {
         this.address = address;
         this.port = port;
         this.peers = agents;
+        System.out.println("agent const");
         blockchain.add(root);
     }
 
@@ -131,9 +132,16 @@ public class Agent {
         // if you want to move early node, then go through the arraylist and get the node and get the north or whaver of it.
         // teh arraylist should be a structure (node id, north, e , w, s)
         // if you wadd a norde to the west, you change the structure (node i, noth, new node id, south)
-        for (int i = 0 ;true;i++){
-            for (int j = 0 ; j<4 ; j++){
-                 return blockchain.get(i).getChildren().get(j);
+        for (int i = 0, j = 0 ;true;i++){
+            Block b=blockchain.get(i).getChildren().get(j);
+            for ( j = 0 ; j<4 ; j++){
+                if (blockchain.get(i).getChildren().get(j)==null){
+                    System.out.println("got the lateStblock ");
+                    return b;
+                }
+
+                b = blockchain.get(i).getChildren().get(j);
+
             }
         }
         //return blockchain.get(blockchain.size() - 1);

@@ -23,6 +23,8 @@ public class AgentServerThread extends Thread {
     @Override
     public void run() {
         try (
+
+
                 ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
                 final ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
             Message message = new Message.MessageBuilder().withSender(agent.getPort()).withType(READY).build();
@@ -31,7 +33,7 @@ public class AgentServerThread extends Thread {
             while ((fromClient = in.readObject()) != null) {
                 if (fromClient instanceof Message) {
                     final Message msg = (Message) fromClient;
-                    System.out.println(String.format("%d received: %s", agent.getPort(), fromClient.toString()));
+                    System.out.println(String.format("%d 123 received: %s", agent.getPort(), fromClient.toString()));
                     if (INFO_NEW_BLOCK == msg.type) {
                         if (msg.blocks.isEmpty() || msg.blocks.size() > 1) {
                             System.err.println("Invalid block received: " + msg.blocks);

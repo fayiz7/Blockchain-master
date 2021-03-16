@@ -17,6 +17,7 @@ public class Message implements Serializable {
 
     @Override
     public String toString() {
+        System.out.println("message to string ");
         return String.format("Message {type=%s, sender=%d, receiver=%d, blocks=%s}", type, sender, receiver, blocks);
     }
 

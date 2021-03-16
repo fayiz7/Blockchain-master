@@ -9,13 +9,16 @@ public class AgentManager {
     private static final Block root = new Block(0,0 ,"ROOT_HASH", "ROOT");
 
     public Agent addAgent(String name, int port) {
+        System.out.println("issue 1 here");
         Agent a = new Agent(name, "localhost", port, root, agents);
         a.startHost();
         agents.add(a);
+        System.out.println("issue 2 here");
         return a;
     }
 
     public Agent getAgent(String name) {
+        System.out.println("get agent ");
         for (Agent a : agents) {
             if (a.getName().equals(name)) {
                 return a;
