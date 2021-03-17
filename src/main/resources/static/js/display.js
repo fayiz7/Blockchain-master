@@ -28,6 +28,7 @@ function displayAgent(jsonAgent) {
     if (typeof jsonAgent === "string") {
         var agent;
         try {
+        alert("inside displayagent");
             agent = JSON.parse(jsonAgent);
         } catch (e) {
             displayMsg("Invalid response from server " + jsonAgent, "red");
@@ -93,6 +94,7 @@ function createBlockP(block) {
     p.title = "creator " + block.creator;
     p.innerHTML = "index=" + block.index + " creator=" + block.creator + " timestamp="
         + block.timestamp + " hash=" + block.hash + " previous hash=" + block.previousHash;
+        alert(p.innerHTML);
     console.log("create p.innerHTML" + p.innerHTML);
     return p;
 }

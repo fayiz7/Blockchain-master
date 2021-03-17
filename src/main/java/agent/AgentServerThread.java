@@ -1,5 +1,7 @@
 package agent;
 
+import org.springframework.http.converter.json.GsonBuilderUtils;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -22,15 +24,19 @@ public class AgentServerThread extends Thread {
 
     @Override
     public void run() {
+        System.out.println("*** 1 AgentServerThread ");
         try (
 
 
                 ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
                 final ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
+            System.out.println("*** 2 AgentServerThread ");
             Message message = new Message.MessageBuilder().withSender(agent.getPort()).withType(READY).build();
             out.writeObject(message);
             Object fromClient;
+            System.out.println("*** 3 AgentServerThread ");
             while ((fromClient = in.readObject()) != null) {
+                System.out.println("&&& Agent Server");
                 if (fromClient instanceof Message) {
                     final Message msg = (Message) fromClient;
                     System.out.println(String.format("%d 123 received: %s", agent.getPort(), fromClient.toString()));

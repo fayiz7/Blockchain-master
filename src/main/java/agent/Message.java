@@ -26,11 +26,13 @@ public class Message implements Serializable {
 
         MessageBuilder withSender(final int sender) {
             message.sender = sender;
+            System.out.println("SENDER");
             return this;
         }
 
         MessageBuilder withReceiver(final int receiver) {
             message.receiver = receiver;
+            System.out.println("RECEIVER ");
             return this;
         }
 

@@ -97,8 +97,10 @@ public class Agent {
                 System.out.println(String.format("Server %s started", serverSocket.getLocalPort()));
                 listening = true;
                 while (listening) {
+                    System.out.println(String.format("Server2 %s started", serverSocket.getLocalPort()));
                     final AgentServerThread thread = new AgentServerThread(Agent.this, serverSocket.accept());
                     thread.start();
+                    System.out.println(String.format("Server3 %s started", serverSocket.getLocalPort()));
                 }
                 serverSocket.close();
             } catch (IOException e) {
@@ -166,6 +168,7 @@ public class Agent {
     }
 
     private void broadcast(Message.MESSAGE_TYPE type, final Block block) {
+        System.out.println("broadcast");
         peers.forEach(peer -> sendMessage(type, peer.getAddress(), peer.getPort(), block));
     }
 
@@ -175,6 +178,7 @@ public class Agent {
                 final ObjectOutputStream out = new ObjectOutputStream(peer.getOutputStream());
                 final ObjectInputStream in = new ObjectInputStream(peer.getInputStream())) {
             Object fromPeer;
+            System.out.println("*** AGENT");
             while ((fromPeer = in.readObject()) != null) {
                 if (fromPeer instanceof Message) {
                     final Message msg = (Message) fromPeer;

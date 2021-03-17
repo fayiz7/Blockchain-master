@@ -19,8 +19,9 @@ function createAgent() {
     var idx = getNextCount();
     var name = "Agent" + idx;
     var port = 3000 + idx;
+    alert("craeteagent");
     sendHttpRequest("POST", "agent?name=" + name + "&port=" + port, null, displayAgent);
-
+    alert("create2");
     if (testMode) {
         displayAgent('{"name":"Agent1","port":1001,"blockchain":[{"index":2,"creator":"Agent1","timestamp":1502193341671,"hash":"4f99b67b06b6831886815ffe66a55be2e34dcefdfc16b6214710313062a8a480","previousHash":"ROOT_HASH"}]}');
     }
@@ -51,6 +52,7 @@ function sendHttpRequest(action, url, data, callback) {
         }
     };
     xmlHttp.open(action, url, true);
+    alert(data);
     xmlHttp.send(data);
 }
 
